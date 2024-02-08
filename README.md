@@ -9,6 +9,13 @@ IRL :
  - réglementation etops -> champs d'action avion (temps maximum par rapport à un endroit d'atterissage sûr) (ex : A350 etops de 350 min)
  - carburant -> coût : 1 T = 1 000 €, 5 - 8 T / h selon avion (donc -de tps = + d'argent)
 
+Members : 
+- Mathias HATEAU
+- Corentin DOMENICHINI
+
+Special Thanks to :
+- Bastien DURAIN
+- Idriss ABERKANE
 
 
 ### Windows
@@ -17,4 +24,4 @@ IRL :
 
     - Installez le système de build python et les dépendances :
 
-      `python.exe -m pip install --upgrade build "cython @ git+https://github.com/cython/cython" setuptools pyside6`<br/>
+      `python.exe -m pip install --upgrade build "cython @ git+https://github.com/cython/cython" setuptools pyside6`
