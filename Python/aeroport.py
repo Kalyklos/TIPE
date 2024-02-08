@@ -1,6 +1,9 @@
 # référencement de différents aéroports (sommets du graphe) représenté par des classes
 
-
+import sys
+import traceback
+from typing import *
+from math import *
 
 
 class Airport:

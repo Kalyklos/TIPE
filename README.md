@@ -8,3 +8,13 @@ IRL :
  - Taxe (redevance aéronautique) -> ne pas passer sur un tout petit bout d'un pays (taxe de survol)
  - réglementation etops -> champs d'action avion (temps maximum par rapport à un endroit d'atterissage sûr) (ex : A350 etops de 350 min)
  - carburant -> coût : 1 T = 1 000 €, 5 - 8 T / h selon avion (donc -de tps = + d'argent)
+
+
+
+### Windows
+    - Installez [python3](https://www.python.org/downloads/windows/).
+    *NB : Normalement, les header python.h et pip sont installés en meme temps.*
+
+    - Installez le système de build python et les dépendances :
+
+      `python.exe -m pip install --upgrade build "cython @ git+https://github.com/cython/cython" setuptools pyside6`<br/>
