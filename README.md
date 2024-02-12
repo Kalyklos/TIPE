@@ -13,10 +13,9 @@ Members :
 - Mathias HATEAU
 - Corentin DOMENICHINI
 
-Special Thanks to :
-- Bastien DURAIN
-- Idriss ABERKANE
-
+Sources :
+- [insérer des sources ici de site internet + livres.]
+- M. Martin (pilote d'avions).
 
 ### Windows
     - Installez [python3](https://www.python.org/downloads/windows/).
