@@ -32,27 +32,37 @@ class Graph :
     """Airports link"""
     
     def __init__(self, width) :
-        self.values = [[0 for j in range(width)] for i in range(width)]
-        #on identifie les aéroports par les noeuds du graphe, en les modélisant par une matrice.
+        """Parameters
+        ----------
+        width : TYPE
+            DESCRIPTION.
 
+        Returns
+        -------
+        None."""
+        
         self.n_airports = width
-        self.nom_noeud_graph = [] #on stockera les initiales des aéroports dans une list de str.
+        self.values = [[-1 for j in range(width)] for i in range(width)]
+        for i in range(self.n_airports) :
+            self.values[i][i] = 0
+    
     
     def new_airport(self) :
         """None --> Graph
         Adds a new Airport to the Graph"""
         
         self.n_airports += 1
-        self.values.append([0 for i in range(self.n_airports)])
+        self.values.append([-1 for i in range(self.n_airports)])
         for i in range(self.n_airports-1) :
-            self.values[i].append(0)
+            self.values[i].append(-1)
+        self.values[n_airports-1][n_airports-1] = 0
     
     
-    def new_link(self, airport1, airport2, cost) :
+    def add_link(self, airport1, airport2, cost) :
         """Airport_Id, Airport_Id, Int --> Graph
         If no links exist between airport1 and airport2, adds a new link of weight cost between Airport1 and Airport2"""
         
-        if self.values[airport1][airport2] == 0 :
+        if self.values[airport1][airport2] == -1 :
             self.values[airport1][airport2] = cost
             self.values[airport2][airport1] = cost
         
