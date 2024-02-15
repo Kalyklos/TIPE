@@ -5,6 +5,7 @@ from math import *
 
 from settings import *
 from aeroport import *
+from avion import *
 
 def shortest_way (total_way, departure, arrival):
     """fonction déterminant le plus court chemin dans un graph grâce à l'algorithme de Dijkstra
