@@ -33,8 +33,10 @@ class Graph :
     
     def __init__(self, width) :
         self.values = [[0 for j in range(width)] for i in range(width)]
+        #on identifie les aéroports par les noeuds du graphe, en les modélisant par une matrice.
+
         self.n_airports = width
-    
+        self.nom_noeud_graph = [] #on stockera les initiales des aéroports dans une list de str.
     
     def new_airport(self) :
         """None --> Graph
@@ -55,9 +57,6 @@ class Graph :
             self.values[airport2][airport1] = cost
 
 
-#on identifie les aéroports par les noeuds du graphe, en les modélisant par une matrice.
-nom_noeud_graph = [] #on stockera les initiales des aéroports dans une list de str.
-noeud_graph = [] #matrice référençant les liaisons entre aéroports, 
 
 NY = aeroport.Airport(9)
 print(NY.nb_runway)
