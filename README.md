@@ -24,3 +24,9 @@ Sources :
     - Installez le système de build python et les dépendances :
 
       `python.exe -m pip install --upgrade build "cython @ git+https://github.com/cython/cython" setuptools pyside6`
+
+## Licence
+Ce programme et son code source sont disponibles sous les termes de la licence GNU General Public License version 3 or later (GPLV3+), 
+lisez le fichier LICENSE (en anglais), sa traduction francaise dans le fichier LICENCE_FR ou référez-vous à https://www.gnu.org/licenses/ pour plus de détails.
+
+Les textes de présentations et de documentation (tel que ce README.md) sont disponibles sous la licence [Creative Common Attribution-ShareAlike (CC-BY-SA)](https://creativecommons.org/licenses/by-sa/4.0/legalcode).
