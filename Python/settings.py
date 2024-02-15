@@ -11,7 +11,7 @@ defaults: dict = {}
 
 try:
     path: str = os.path.abspath(os.path.dirname(__file__))
-    path = os.path.join(path, "default_settings.json")
+    path = os.path.join(path, "../.vscode/default_settings.json")
     
     with open(path, 'r', encoding="utf-8") as setfile:
         defaults = json.load(setfile)
@@ -25,7 +25,7 @@ if "--no-settings" in argv:
     
 else:
     path: str = os.path.abspath(os.path.dirname(__file__))
-    path = os.path.join(path, "settings.json")
+    path = os.path.join(path, "../.vscode/settings.json")
     
     try:
         with open(path, 'r', encoding="utf-8") as setfile:
