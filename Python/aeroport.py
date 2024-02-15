@@ -8,7 +8,7 @@ import traceback
 from typing import *
 from math import *
 
-from . import settings
+from settings import *
 
 
 class Airport:

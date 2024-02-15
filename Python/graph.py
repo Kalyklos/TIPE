@@ -10,9 +10,9 @@ from PySide6.QtWidgets import *
 from PySide6.QtGui import *
 from PySide6.QtCore import *
 
-from . import settings
-from . import aeroport
-from . import avion
+from settings import *
+from aeroport import *
+from avion import *
 
 
 
