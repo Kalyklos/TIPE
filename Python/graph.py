@@ -83,5 +83,5 @@ class Graph :
 
 
 
-NY = aeroport.Airport(9)
+NY = Airport(9)
 print(NY.nb_runway)
