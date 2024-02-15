@@ -55,7 +55,7 @@ class Graph :
         self.values.append([-1 for i in range(self.n_airports)])
         for i in range(self.n_airports-1) :
             self.values[i].append(-1)
-        self.values[n_airports-1][n_airports-1] = 0
+        self.values[self.n_airports-1][self.n_airports-1] = 0
     
     
     def add_link(self, airport1, airport2, cost) :
