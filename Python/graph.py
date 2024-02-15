@@ -50,11 +50,26 @@ class Graph :
     
     def new_link(self, airport1, airport2, cost) :
         """Airport_Id, Airport_Id, Int --> Graph
-        Adds a new link of weight cost between Airport1 and Airport2"""
+        If no links exist between airport1 and airport2, adds a new link of weight cost between Airport1 and Airport2"""
         
         if self.values[airport1][airport2] == 0 :
             self.values[airport1][airport2] = cost
             self.values[airport2][airport1] = cost
+        
+    
+    def __str__(self) :
+        """outputs a pretty string.
+        how pretty ?  not as much as you <3"""
+        string = "\n"
+        for i in self.values :
+            string += "|"
+            for j in i :
+                string += str(j)
+                string += ", "
+            string = string[:-1]
+            string = string[:-1]
+            string += "|\n"
+        return string
 
 
 
