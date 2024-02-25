@@ -4,6 +4,7 @@
 # complexité O(n log(n))
 
 from math import *
+from numpy import *
 
 from settings import *
 from aeroport import *
@@ -21,7 +22,7 @@ def initialisation (reseau, depart):
     """
     distance = {}
     for sommet in reseau:
-        distance[sommet] = -1 #on représentera ici l'infini par -1.
+        distance[sommet] = inf #on représentera ici l'infini par inf de numpy.
     distance[depart] = 0
     return distance
 
