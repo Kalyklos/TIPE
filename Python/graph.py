@@ -30,7 +30,6 @@ except ModuleNotFoundError as e:
 
 class Graph :
     """Airports link"""
-    
     def __init__(self, width) :
         """Parameters
         ----------
@@ -80,8 +79,3 @@ class Graph :
             string = string[:-1]
             string += "|\n"
         return string
-
-
-
-NY = Airport(9)
-print(NY.nb_runway)

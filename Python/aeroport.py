@@ -12,6 +12,7 @@ from settings import *
 
 
 class Airport:
+    # to do : ajout des poids entres différents sommets.
     """Classe régissant les aéroports (noeuds)"""
     def __init__(self, nb_runway):
         self.nb_runway = nb_runway
