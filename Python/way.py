@@ -10,66 +10,32 @@ from settings import *
 from aeroport import *
 from avion import *
 
-def initialisation (reseau, depart):
-    """Initialise les distances à + l'infini, nécessaire pour l'algorithme de Dijkstra.
+def shortest_way_dijkstra (sommet, link, depart):
+    """renvoie les ditances les plus courtes pour chaque aeroport relativement à l'aeroport de départ grâce à l'algorithme de Dijkstra.
 
     Args:
-        reseau (list): liste des sommets (str) du graphe.
-        depart (str): sommet de départ.
+        sommet (list): list des sommets du graphe.
+        link (dict): dictionnaire de dictionnaire contenant pour chaque aeroport les liens direct avec les aeroports et leur distance (distance par rapport à soit-même = 0).
+        depart (str): aeroport de départ.
 
     Returns:
-        dict : dictionnaire contenant la distance des sommets par rapport à depart, initialiser à l'infini.
+        dict: dictionnaire contenant la distance à chaque aeroport par rapport à celui de départ.
     """
-    distance = {}
-    for sommet in reseau:
-        distance[sommet] = inf #on représentera ici l'infini par inf de numpy.
+
+    # initialisation de toute les distances entre aéroport à l'infini (de numpy).
+    distance = [inf]*len(sommet)
     distance[depart] = 0
+    sommet_reference = []
+    while [k for k in sommet if distance[k] != inf and k not in sommet_reference] != []: # tant que des sommets sont à l'infini.
+
+        distance_min = inf                                                               # recherche de minimum
+        for i in range (len(distance)):
+            if i not in sommet_reference and distance[i] < distance_min:
+                distance_min = distance[i]
+                indice_sommet = i
+
+        voisins = [k for k in range(len(link[indice_sommet])) if link[indice_sommet][k] != 0]
+        for proche in voisins:
+            distance[proche] = min(distance[proche], distance[indice_sommet] + link[indice_sommet][proche]) # ajout du plus petit chemin par rapport aux sommets liés.
+            sommet_reference.append(indice_sommet)
     return distance
-
-def with_link (distance):
-    """renvoie la liste des sommets référencé et non référencé
-
-    Args:
-        distance (dict): dictionnaire renvoyé par initialisation par exemple.
-
-    Returns:
-        (list, list): tuple de list contenant les sommets référencés ou non.
-    """
-    avec = []
-    sans = []
-    for sommet in distance:
-        if distance[sommet] != -1:
-            avec.append(sommet)
-        else:
-            sans.append(sommet)
-    return (avec, sans)
-
-def find_min (reseau):
-    
-    """renvoie le sommet le plus proche parmi les sommets non référencés.
-
-    Args:
-        compl (list): list des sommets du graphe (Graph).
-    """
-    avec, sans = with_link(reseau)
-    mini = -1
-    plus_proche = "-1"
-    for sommet in sans:
-        pass
-
-    #ça bug je m'en occuperai plus tard (il faut trouver le sommet de sans le plus proche).
-    pass
-
-        
-
-def shortest_way_D (total_way, departure, arrival):
-    """fonction déterminant le plus court chemin dans un graph grâce à l'algorithme de Dijkstra
-
-    Args:
-        total_way (graph.Graph): Graphe de graph.py dans lequel le chemin le plus court sera chercher.
-        departure (str): aéroport de départ.
-        arrival (str): aéroport d'arrivé.
-    Returns:
-        best_way (list): liste des sommets par lesquelles passer.
-    """
-    pass
