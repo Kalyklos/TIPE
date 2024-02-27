@@ -1,7 +1,6 @@
 #  Code sous liscence GPL3+. Plus de détail a <https://www.gnu.org/licenses/> ou dans le fichier LICENSE
 # encoding = utf8
 
-# complexité O(n log(n))
 
 from math import *
 from numpy import *
@@ -10,7 +9,20 @@ from settings import *
 from aeroport import *
 from avion import *
 
+def Dijkstra(graphe, depart):
+    """Appel shortest_way_dijkstra sur graphe.
+
+    Args:
+        graphe (Graph): Graph de graph.py
+        depart (str or Airport): nom de l'aeroport ou Airport de aeroport.py
+
+    Returns:
+        shortest_way_dijkstra sur le graphe avec depart comme aeroport de depart
+    """
+    return shortest_way_dijkstra ([k.key for k in graphe.values], graphe.link, str(depart))
+
 def shortest_way_dijkstra (sommet, link, depart):
+    # complexité O(n log(n))
     """renvoie les ditances les plus courtes pour chaque aeroport relativement à l'aeroport de départ grâce à l'algorithme de Dijkstra.
 
     Args:

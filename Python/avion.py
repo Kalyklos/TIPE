@@ -7,6 +7,7 @@ import sys
 import traceback
 from typing import *
 from math import *
+from numpy import *
 
 from settings import *
 
