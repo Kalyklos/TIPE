@@ -8,7 +8,7 @@ IRL :
  - Taxe (redevance aéronautique) -> ne pas passer sur un tout petit bout d'un pays (taxe de survol)
  - réglementation etops -> champs d'action avion (temps maximum par rapport à un endroit d'atterissage sûr) (ex : A350 etops de 350 min)
  - carburant -> coût : 1 T = 1 000 €, 5 - 8 T / h selon avion (donc -de tps = + d'argent)
- - nous représenterons dans le code l'infini par -1/
+ - nous représenterons dans le code l'infini par inf du module numpy
 
 Members : 
 - Mathias HATEAU
