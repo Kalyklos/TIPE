@@ -57,8 +57,7 @@ class Graph :
         
     
     def __str__(self) :
-        """outputs a pretty string.
-        how pretty ?  not as much as you <3"""
+        # non tu DOCUMENTE tes fonctions
         string = "\n"
         for i in self.values :
             string += "|"
