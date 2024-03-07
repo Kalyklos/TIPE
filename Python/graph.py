@@ -28,14 +28,7 @@ except ModuleNotFoundError as e:
 class Graph :
     """Airports link"""
     def __init__(self, width) :
-        """Parameters
-        ----------
-        width : TYPE
-            DESCRIPTION.
-
-        Returns
-        -------
-        None."""        #très clair tout ça.
+        # to do : DOCUMENTE TES FONCTIONS !!!
         
         self.n_airports = width  # to do ajouter self.link un dictionnaire de dictionnaire contenant pour chaque aeroport les liens direct avec les aeroports et leur distance (distance par rapport à soi-même = 0).
         self.values = [[-1 for j in range(width)] for i in range(width)]
