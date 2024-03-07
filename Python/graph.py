@@ -70,6 +70,5 @@ class Graph :
         return string
 
 
-def graph_creation() :
-    G = Graph(10)
-    
+def graph_creation(n) :
+    G = Graph(n)
