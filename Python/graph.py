@@ -56,7 +56,11 @@ class Graph :
         
     
     def __str__(self) :
-        # non tu DOCUMENTE tes fonctions
+        """affiche le nom des aéroports
+
+        Returns:
+            str: le nom des aéroports
+        """
         string = "\n"
         for i in self.values :
             string += "|"
