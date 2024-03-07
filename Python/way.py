@@ -19,7 +19,7 @@ def Dijkstra(graphe, depart):
     Returns:
         shortest_way_dijkstra sur le graphe avec depart comme aeroport de depart
     """
-    return shortest_way_dijkstra ([k.key for k in graphe.values], graphe.link, str(depart))
+    return shortest_way_dijkstra ([k.keys for k in graphe.values], graphe.link, str(depart))
 
 def shortest_way_dijkstra (sommet, link, depart):
     # complexité O(n log(n))
@@ -43,19 +43,13 @@ def shortest_way_dijkstra (sommet, link, depart):
     while [k for k in sommet if distance[k] != inf and k not in sommet_reference] != []: # tant que des sommets sont à l'infini.
 
         distance_min = inf                                                               # recherche de minimum
-        for i in range (len(distance)):
+        for i in distance:
             if i not in sommet_reference and distance[i] < distance_min:
                 distance_min = distance[i]
                 indice_sommet = i
 
-        voisins = [k for k in range(len(link[indice_sommet])) if link[indice_sommet][k] != 0]
+        voisins = [k for k in (link[indice_sommet]) if link[indice_sommet][k] != 0]
         for proche in voisins:
             distance[proche] = min(distance[proche], distance[indice_sommet] + link[indice_sommet][proche]) # ajout du plus petit chemin par rapport aux sommets liés.
             sommet_reference.append(indice_sommet)
-            print(distance[proche])
     return distance
-
-sommet_test = ["NY", "TU"]
-link = {"NY" : {"NY" : 0, "TU" : 10}, "TU" : {"TU" : 0, "NY" : 10}}
-depart = "TU"
-print(shortest_way_dijkstra(sommet_test, link, depart))
