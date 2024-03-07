@@ -10,7 +10,7 @@ from aeroport import *
 from avion import *
 
 def Dijkstra(graphe, depart):
-    """Appel shortest_way_dijkstra sur graphe.
+    """Appelle shortest_way_dijkstra sur graphe.
 
     Args:
         graphe (Graph): Graph de graph.py
