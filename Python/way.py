@@ -35,7 +35,9 @@ def shortest_way_dijkstra (sommet, link, depart):
     """
 
     # initialisation de toute les distances entre aéroport à l'infini (de numpy).
-    distance = [inf]*len(sommet)
+    distance = {}
+    for s in sommet:
+        distance[s] = inf
     distance[depart] = 0
     sommet_reference = []
     while [k for k in sommet if distance[k] != inf and k not in sommet_reference] != []: # tant que des sommets sont à l'infini.
@@ -50,4 +52,5 @@ def shortest_way_dijkstra (sommet, link, depart):
         for proche in voisins:
             distance[proche] = min(distance[proche], distance[indice_sommet] + link[indice_sommet][proche]) # ajout du plus petit chemin par rapport aux sommets liés.
             sommet_reference.append(indice_sommet)
+            print(distance[proche])
     return distance
