@@ -4,7 +4,7 @@
 import sys
 from typing import NoReturn
 
-from . import affichage
+from affichage import *
 
 def launch_app() -> NoReturn:
     sys.exit(affichage.app.exec_())
