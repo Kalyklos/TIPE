@@ -69,3 +69,4 @@ class Graph :
             string = string[:-1]
             string += "|\n"
         return string
+
