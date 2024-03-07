@@ -37,7 +37,7 @@ class Graph :
         -------
         None."""        #très clair tout ça.
         
-        self.n_airports = width  # to do ajouter self.link un dictionnaire de dictionnaire contenant pour chaque aeroport les liens direct avec les aeroports et leur distance (distance par rapport à soit-même = 0).
+        self.n_airports = width  # to do ajouter self.link un dictionnaire de dictionnaire contenant pour chaque aeroport les liens direct avec les aeroports et leur distance (distance par rapport à soi-même = 0).
         self.values = [[-1 for j in range(width)] for i in range(width)]
         for i in range(self.n_airports) :
             self.values[i][i] = 0
