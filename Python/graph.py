@@ -7,10 +7,6 @@ from typing import *
 from math import *
 from numpy import *
 
-from PySide6.QtWidgets import *
-from PySide6.QtGui import *
-from PySide6.QtCore import *
-
 from settings import *
 from aeroport import *
 from avion import *
