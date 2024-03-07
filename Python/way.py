@@ -23,7 +23,7 @@ def Dijkstra(graphe, depart):
 
 def shortest_way_dijkstra (sommet, link, depart):
     # complexité O(n log(n))
-    """renvoie les ditances les plus courtes pour chaque aeroport relativement à l'aeroport de départ grâce à l'algorithme de Dijkstra.
+    """renvoie les distances les plus courtes pour chaque aeroport relativement à l'aeroport de départ grâce à l'algorithme de Dijkstra.
 
     Args:
         sommet (list): list des sommets du graphe.
