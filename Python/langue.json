@@ -1,0 +1,31 @@
+{
+    "title":"A_trouvé",
+    "menu":{
+        "display":{
+            "title":"A&ffichage",
+            "detach":"&Détacher les contrôles",
+            "attach":"&Attacher les contrôles"
+        },
+        "settings":{
+            "title":"&Configuration",
+            "speak":"&Langues",
+            "theme":{
+                "title":"&Thèmes",
+                "light":"Clair",
+                "dark":"Sombre",
+                "system":"Système"
+            }
+        },
+        "help":{
+            "title":"Aid&e",
+            "license":"Lire la &licence"
+        }
+    },
+    "file":{
+        "license":"LICENCE_FR"
+    },
+    "warnings":{
+        "64-bits":"Warning: attention c'est pas bien ! "
+    },
+    "404":"Texte introuvable : regardez les logs."
+}

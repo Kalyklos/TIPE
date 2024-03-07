@@ -31,6 +31,7 @@ def warn(warning:str)->None:
     if settings.get("affichage.warn"):
         warnwintxt.setText(warnwintxt.text() + "\n\n" + langue.get("warnings."+warning))
         warnwin.show()
+
 class Main_window(QWidget):
     """Cette class définit la fenètre principale du programme, à partir d'un QWidget."""
     changeLangSignal : Signal = Signal()
