@@ -51,3 +51,11 @@ def shortest_way_dijkstra (sommet, link, depart):
             distance[proche] = min(distance[proche], distance[indice_sommet] + link[indice_sommet][proche]) # ajout du plus petit chemin par rapport aux sommets liés.
             sommet_reference.append(indice_sommet)
     return distance
+
+
+
+sommet = ["NY", "PA", "MI"]
+link = {NY : {NY : 0, PA : 17}, PA : {PA : 0, NY : 17, MI : 1}, MI : {MI : 0, PA : 1}}
+depart = "NY"
+
+print(shortest_way_dijkstra(sommet, link, depart))
