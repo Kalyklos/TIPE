@@ -15,10 +15,11 @@ from settings import *
 class Airport:
     # to do : ajout des poids entres différents sommets.
     """Classe régissant les aéroports (noeuds)"""
-    def __init__(self, nb_runway):
+    def __init__(self, nb_runway, id):
         self.nb_runway = nb_runway
         self.f_runway = self.nb_runway
         self.link = []
+        self.id = id
     def is_free (self):
         """Vérifie si une piste est libre.
 

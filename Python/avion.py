@@ -55,6 +55,6 @@ class Plane :
         Returns:
             bool: True if self has clearance for route, False elsewise
         """
-        if self.etops >= ledictionnairedesetops[route] :
+        if self.etops >= ledictionnairedesetops[route] : #to do : créer ledictonnairedesetops
             return True
         return False

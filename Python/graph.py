@@ -68,3 +68,8 @@ class Graph :
             string = string[:-1]
             string += "|\n"
         return string
+
+
+def graph_creation() :
+    G = Graph(10)
+    
