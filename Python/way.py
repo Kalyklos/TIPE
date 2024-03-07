@@ -54,3 +54,8 @@ def shortest_way_dijkstra (sommet, link, depart):
             sommet_reference.append(indice_sommet)
             print(distance[proche])
     return distance
+
+sommet_test = ["NY", "TU"]
+link = {"NY" : {"NY" : 0, "TU" : 10}, "TU" : {"TU" : 0, "NY" : 10}}
+depart = "TU"
+print(shortest_way_dijkstra(sommet_test, link, depart))
