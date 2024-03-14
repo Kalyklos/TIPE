@@ -13,15 +13,15 @@ from avion import *
 
 
 
-try:
-    from PySide6.QtCore import *
-    from PySide6.QtWidgets import *
-    from PySide6.QtGui import *
+# try:
+#     from PySide6.QtCore import *
+#     from PySide6.QtWidgets import *
+#     from PySide6.QtGui import *
 
-    Signal()
-except ModuleNotFoundError as e:
-    print("le module PySide6 devrait être installé pour que ce programme puisse fonctionner, lisez README.md pour plus de détails", file=stderr)
-    raise e
+#     Signal()
+# except ModuleNotFoundError as e:
+#     print("le module PySide6 devrait être installé pour que ce programme puisse fonctionner, lisez README.md pour plus de détails", file=stderr)
+#     raise e
 
 
 class Graph :
@@ -75,3 +75,24 @@ class Graph :
 
 def graph_creation(n) :
     G = Graph(n)
+
+g2 = Graph(2)
+g3 = Graph(3)
+g10 = Graph(10)
+
+g2.add_link(0,1,1)
+g3.add_link(0,1,1)
+g3.add_link(1,2,0.5)
+g3.add_link(0,2,2)
+g10.add_link(0,1,5)
+g10.add_link(0,2,7.5)
+g10.add_link(0,6,16)
+g10.add_link(1,5,12)
+g10.add_link(2,4,13)
+g10.add_link(3,5,2)
+g10.add_link(4,5,6)
+g10.add_link(4,9,11)
+g10.add_link(5,7,4)
+g10.add_link(6,8,1.5)
+g10.add_link(7,8,0.75)
+g10.add_link(8,9,4)
