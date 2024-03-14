@@ -17,8 +17,9 @@ except ModuleNotFoundError as e:
     raise e
 
 from settings import *
-
-app: QApplication = QApplication(sys.argv)
+if __name__ == "__main__":
+    app: QApplication = QApplication(sys.argv)
+    sys.exit(app.exec())
 
 warnwin = QScrollArea()
 warnwintxt = QLabel(warnwin)
@@ -30,7 +31,7 @@ def warn(warning:str)->None:
         warnwintxt.setText(warnwintxt.text() + "\n\n" + langue.get("warnings."+warning))
         warnwin.show()
 
-class Main_window(QWidget):
+class Main_window(QMainWindow):
     """Cette class définit la fenètre principale du programme, à partir d'un QWidget."""
     changeLangSignal : Signal = Signal()
     
