@@ -13,7 +13,7 @@ def Dijkstra(graphe, depart):
     """Appelle shortest_way_dijkstra sur graphe.
 
     Args:
-        graphe (dict): Dictionnaire contenant la distance de chaque aéroport par rapport aux autres.
+        graphe (dict): Dictionnaire de dictionnaire contenant la distance de chaque aéroport par rapport aux autres.
         depart (str or Airport): nom de l'aeroport ou Airport de aeroport.py
 
     Returns:
@@ -52,4 +52,5 @@ def shortest_way_dijkstra (sommet, link, depart):
         for proche in voisins:
             distance[proche] = min(distance[proche], distance[indice_sommet] + link[indice_sommet][proche]) # ajout du plus petit chemin par rapport aux sommets liés.
             sommet_reference.append(indice_sommet)
+
     return distance
