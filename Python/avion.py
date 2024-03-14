@@ -14,7 +14,7 @@ import way
 ledictionnairedesetops = {}
 
 class Plane :
-    """C'EST DES NAVIONS ILS FONT VROOM VROOOOOOOOOM"""
+    """Classe régissant les différents types d'avions simulable."""
     
     def __init__(self, fuel_capacity, fuel_consumption, etops, position) :
         """initializes

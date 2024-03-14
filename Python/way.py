@@ -13,13 +13,13 @@ def Dijkstra(graphe, depart):
     """Appelle shortest_way_dijkstra sur graphe.
 
     Args:
-        graphe (Graph): Graph de graph.py
+        graphe (dict): Dictionnaire contenant la distance de chaque aéroport par rapport aux autres.
         depart (str or Airport): nom de l'aeroport ou Airport de aeroport.py
 
     Returns:
         shortest_way_dijkstra sur le graphe avec depart comme aeroport de depart
     """
-    return shortest_way_dijkstra ([k.keys for k in graphe.values], graphe.link, str(depart))
+    return shortest_way_dijkstra ([k.keys for k in graphe], graphe, str(depart))
 
 def shortest_way_dijkstra (sommet, link, depart):
     # complexité O(n log(n))
