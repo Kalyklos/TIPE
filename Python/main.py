@@ -8,4 +8,3 @@ import affichage as aff
 
 def launch_app() -> NoReturn:
     sys.exit(aff.app.exec())
-aff.app.exec()
