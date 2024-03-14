@@ -17,19 +17,10 @@ except ModuleNotFoundError as e:
     raise e
 
 from settings import *
+
 if __name__ == "__main__":
     app: QApplication = QApplication(sys.argv)
     sys.exit(app.exec())
-
-warnwin = QScrollArea()
-warnwintxt = QLabel(warnwin)
-warnwin.setWidget(warnwintxt)
-warnwin.setWindowTitle("WARNINGS:")
-
-def warn(warning:str)->None:
-    if settings.get("affichage.warn"):
-        warnwintxt.setText(warnwintxt.text() + "\n\n" + langue.get("warnings."+warning))
-        warnwin.show()
 
 class Main_window(QMainWindow):
     """Cette class définit la fenètre principale du programme, à partir d'un QWidget."""
@@ -64,12 +55,6 @@ class Main_window(QMainWindow):
             self.themeAction.append(QAction(langue.get("menu.settings.theme."+theme), self))
             self.changeLangSignal.connect(langue.lazyEval(self.themeAction[-1].setText,"menu.settings.theme."+theme))
             self.themeAction[-1].triggered.connect(partial(self.change_theme,theme))
-
-        self.simAction: list(QAction) = []
-        for sim in ("second","day","month","year"):
-            self.simAction.append(QAction(langue.get("menu.settings.sim."+sim), self))
-            self.changeLangSignal.connect(langue.lazyEval(self.simAction[-1].setText,"menu.settings.sim."+sim))
-            self.simAction[-1].triggered.connect(partial(self.change_speed,sim))
 
         self.licenseAction: QAction = QAction(langue.get("menu.help.license"), self)
         self.changeLangSignal.connect(langue.lazyEval(self.licenseAction.setText,"menu.help.license"))
