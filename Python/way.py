@@ -54,3 +54,24 @@ def shortest_way_dijkstra (sommet, link, depart):
             sommet_reference.append(indice_sommet)
 
     return distance
+
+
+def BellmanFord(graph, source):
+    distance = [float("Inf")] * len(graph)
+    distance[source] = 0
+
+    for _ in range(len(graph) - 1):
+        for u, v, w in graph:
+            if distance[u] != float("Inf") and distance[u] + w < distance[v]:
+                distance[v] = distance[u] + w
+
+    for u, v, w in graph:
+        if distance[u] != float("Inf") and distance[u] + w < distance[v]:
+            print("Graph contains a negative weight cycle")
+            return
+
+    return distance
+
+graph = [(0, 1, -1), (0, 2, 4), (1, 2, 3), (1, 3, 2), (1, 4, 2), (3, 2, 5), (3, 1, 1), (4, 3, -3)]
+distances = BellmanFord(graph, 0)
+print(distances)
