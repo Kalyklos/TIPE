@@ -46,7 +46,8 @@ class Graph :
     def bellman_ford(self, src):
         distance = {}
         for airport in self.graph:
-            distance[airport] = inf
+            for i in range (3):
+                distance[airport[i]] = inf
         distance[src] = 0
         for _ in range(self.M - 1):
             for a, b, c in self.graph:
