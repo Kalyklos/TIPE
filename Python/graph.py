@@ -10,7 +10,7 @@ from numpy import *
 from settings import *
 from aeroport import *
 from avion import *
-
+from way import *
 
 
 # try:

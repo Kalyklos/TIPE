@@ -10,7 +10,6 @@ from math import *
 from numpy import *
 
 from settings import *
-import way
 ledictionnairedesetops = {}
 
 class Plane :
