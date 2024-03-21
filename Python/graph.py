@@ -26,14 +26,18 @@ from avion import *
 class Graph :
     """Airports link"""
     def __init__(self, width, vertices) :
-        # to do : DOCUMENTE TES FONCTIONS !!!
+        """init de la class Graph
+
+        Args:
+            width (int): Nombre d'aéroports
+            vertices (int): Nombre d'arêtes
+        """
         self.M = vertices   # Nombre d'arêtes
         self.graph = []     # tableau de noeuds
         self.n_airports = width  # to do ajouter self.link un dictionnaire de dictionnaire contenant pour chaque aeroport les liens direct avec les aeroports et leur distance (distance par rapport à soi-même = 0).
         self.values = [[inf for j in range(width)] for i in range(width)]
         for i in range(self.n_airports) :
             self.values[i][i] = 0
-    
     def add_edge(self, a, b, c):
         self.graph.append([a, b, c])
 
