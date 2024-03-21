@@ -44,17 +44,14 @@ class Graph :
             print("{0}\t\t{1}".format(k, distance[k]))
 
     def bellman_ford(self, src):
-        distance = {}
-        for airport in self.graph:
-            for i in range (3):
-                distance[airport[i]] = inf
+        distance = [float("Inf")] * self.M
         distance[src] = 0
         for _ in range(self.M - 1):
             for a, b, c in self.graph:
-                if distance[a] != inf and distance[a] + c < distance[b]:
+                if distance[a] != float("Inf") and distance[a] + c < distance[b]:
                     distance[b] = distance[a] + c
         for a, b, c in self.graph:
-            if distance[a] != inf and distance[a] + c < distance[b]:
+            if distance[a] != float("Inf") and distance[a] + c < distance[b]:
                 print("Euhh problème")
                 return
         self.print_solution(distance)
