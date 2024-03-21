@@ -23,18 +23,38 @@ from avion import *
 #     print("le module PySide6 devrait être installé pour que ce programme puisse fonctionner, lisez README.md pour plus de détails", file=stderr)
 #     raise e
 
-
 class Graph :
     """Airports link"""
-    def __init__(self, width) :
+    def __init__(self, width, vertices) :
         # to do : DOCUMENTE TES FONCTIONS !!!
-        
+        self.M = vertices   # Nombre d'arêtes
+        self.graph = []     # tableau de noeuds
         self.n_airports = width  # to do ajouter self.link un dictionnaire de dictionnaire contenant pour chaque aeroport les liens direct avec les aeroports et leur distance (distance par rapport à soi-même = 0).
         self.values = [[inf for j in range(width)] for i in range(width)]
         for i in range(self.n_airports) :
             self.values[i][i] = 0
     
-    
+    def add_edge(self, a, b, c):
+        self.graph.append([a, b, c])
+
+    def print_solution(self, distance):
+        print("Distance :")
+        for k in range(self.M):
+            print("{0}\t\t{1}".format(k, distance[k]))
+
+    def bellman_ford(self, src):
+        distance = [float("Inf")] * self.M
+        distance[src] = 0
+        for _ in range(self.M - 1):
+            for a, b, c in self.graph:
+                if distance[a] != float("Inf") and distance[a] + c < distance[b]:
+                    distance[b] = distance[a] + c
+        for a, b, c in self.graph:
+            if distance[a] != float("Inf") and distance[a] + c < distance[b]:
+                print("Euhh problème")
+                return
+        self.print_solution(distance)
+
     def new_airport(self) :
         """None --> Graph
         Adds a new Airport to the Graph"""
@@ -72,13 +92,9 @@ class Graph :
             string += "|\n"
         return string
 
-
-def graph_creation(n) :
-    G = Graph(n)
-
-g2 = Graph(2)
-g3 = Graph(3)
-g10 = Graph(10)
+g2 = Graph(2, 1)
+g3 = Graph(3, 3)
+g10 = Graph(10, 13)
 
 g2.add_link(0,1,1)
 g3.add_link(0,1,1)
