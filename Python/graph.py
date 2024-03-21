@@ -30,7 +30,7 @@ class Graph :
         # to do : DOCUMENTE TES FONCTIONS !!!
         
         self.n_airports = width  # to do ajouter self.link un dictionnaire de dictionnaire contenant pour chaque aeroport les liens direct avec les aeroports et leur distance (distance par rapport à soi-même = 0).
-        self.values = [[-1 for j in range(width)] for i in range(width)]
+        self.values = [[inf for j in range(width)] for i in range(width)]
         for i in range(self.n_airports) :
             self.values[i][i] = 0
     
@@ -42,7 +42,7 @@ class Graph :
         self.n_airports += 1
         self.values.append([-1 for i in range(self.n_airports)])
         for i in range(self.n_airports-1) :
-            self.values[i].append(-1)
+            self.values[i].append(inf)
         self.values[self.n_airports-1][self.n_airports-1] = 0
     
     
@@ -50,7 +50,7 @@ class Graph :
         """Airport_Id, Airport_Id, Int --> Graph
         If no links exist between airport1 and airport2, adds a new link of weight cost between Airport1 and Airport2"""
         
-        if self.values[airport1][airport2] == -1 :
+        if self.values[airport1][airport2] == inf :
             self.values[airport1][airport2] = cost
             self.values[airport2][airport1] = cost
         
