@@ -31,3 +31,9 @@ Ce programme et son code source sont disponibles sous les termes de la licence G
 lisez le fichier LICENSE (en anglais), sa traduction francaise dans le fichier LICENCE_FR ou référez-vous à https://www.gnu.org/licenses/ pour plus de détails.
 
 Les textes de présentations et de documentation (tel que ce README.md) sont disponibles sous la licence [Creative Common Attribution-ShareAlike (CC-BY-SA)](https://creativecommons.org/licenses/by-sa/4.0/legalcode).
+
+Problème pull :
+  git config pull.rebase false
+  git config pull.rebase true
+  git config pull.ff only
+  git merge --no-ff
