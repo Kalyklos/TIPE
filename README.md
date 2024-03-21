@@ -16,7 +16,7 @@ Members :
 
 Sources :
 - [insérer des sources ici de site internet + livres.]
-- M. Martin (pilote d'avions).
+- M. Martin (pilote d'avions Air France).
 
 ### Windows
     - Installez [python3](https://www.python.org/downloads/windows/).
@@ -37,3 +37,7 @@ Problème pull :
   git config pull.rebase true
   git config pull.ff only
   git merge --no-ff
+
+### Problématique
+Thème 2025 :  transition, transformation, conversion
+Comment organiser et modéliser un traffic aérien ?
