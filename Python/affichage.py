@@ -18,12 +18,11 @@ except ModuleNotFoundError as e:
 
 from settings import *
 
-if __name__ == "__main__":
-    app: QApplication = QApplication(sys.argv)
-    sys.exit(app.exec())
+app: QApplication = QApplication(sys.argv)
+sys.exit(app.exec())
 
 class Main_window(QMainWindow):
-    """Cette class définit la fenètre principale du programme, à partir d'un QWidget."""
+    """Cette classe définit la fenêtre principale du programme, à partir d'un QWidget."""
     changeLangSignal : Signal = Signal()
     
     def __init__(self) -> None:
@@ -163,3 +162,5 @@ class Main_window(QMainWindow):
             self.licenseTextlabel: QWidget = QLabel("Ficher manquant ou chemin cassé.")
         self.fenetre_license.setWidget(self.licenseTextlabel)
         self.fenetre_license.show()
+
+Fenetre = Main_window()
