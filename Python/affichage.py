@@ -19,7 +19,6 @@ except ModuleNotFoundError as e:
 from settings import *
 
 app: QApplication = QApplication(sys.argv)
-sys.exit(app.exec())
 
 class Main_window(QMainWindow):
     """Cette classe définit la fenêtre principale du programme, à partir d'un QWidget."""

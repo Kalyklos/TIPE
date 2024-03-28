@@ -2,12 +2,15 @@
 # encoding=utf8
 
 import sys
+import os
 from typing import NoReturn
 import importlib
 
-import os
-sys.path.append(os.path.abspath("/home/mat/Documents/MP2I/INFO/TIPE/Python/affichage"))
-importlib.import_module("affichage")
+try:
+    from affichage import *
+except ModuleNotFoundError as e:
+    print("Problème avec l'affichage.", file=stderr)
+    raise e
 
 def launch_app() -> NoReturn:
-    sys.exit(affichage.app.exec())
+    sys.exit(app.exec())
