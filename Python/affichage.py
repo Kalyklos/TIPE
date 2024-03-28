@@ -162,5 +162,4 @@ class Main_window(QMainWindow):
             self.licenseTextlabel: QWidget = QLabel("Ficher manquant ou chemin cassé.")
         self.fenetre_license.setWidget(self.licenseTextlabel)
         self.fenetre_license.show()
-
-Fenetre = Main_window()
+pass
