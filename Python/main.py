@@ -3,8 +3,11 @@
 
 import sys
 from typing import NoReturn
+import importlib
 
-from affichage import *
+import os
+sys.path.append(os.path.abspath("/home/mat/Documents/MP2I/INFO/TIPE/Python/affichage"))
+importlib.import_module("affichage")
 
 def launch_app() -> NoReturn:
-    sys.exit(app.exec())
+    sys.exit(affichage.app.exec())
