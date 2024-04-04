@@ -161,3 +161,74 @@ class Main_window(QMainWindow):
             self.licenseTextlabel: QWidget = QLabel("Ficher manquant ou chemin cassé.")
         self.fenetre_license.setWidget(self.licenseTextlabel)
         self.fenetre_license.show()
+
+class Controles(QWidget):
+    """Classe permettant de gérer et afficher les contrôles d'ajout ainsi que leurs effets.
+
+    Args:
+        QWidget (class 'Shiboken.ObjectType'): permet l'utilisation de Widgets.
+    """
+    """Ce QWidget permet de gérer les différents contrôles."""
+
+    
+    fenetre_ajoute: QWidget = QScrollArea()
+    fenetre_ajoute.setWindowTitle(langue.get("control.add_settings.title"))
+    layout_aj_sph: QLayout = QGridLayout()
+    fenetre_ajoute.setLayout(layout_aj_air)
+
+    amount = QSpinBox(minimum=0, maximum=10000, value=0)
+    amountl = QLabel(langue.get("control.add_settings.nb"))
+    layout_aj_air.addWidget(amountl, 0,0)
+    layout_aj_air.addWidget(amount,0,1)
+
+    nb_airport = QDoubleSpinBox(minimum=1, maximum=1, value=0,decimals=0)
+    airport_label = QLabel(langue.get("control.add_settings.airport"))
+    for i,widget in enumerate((airport_label, nb_airport, QLabel('+-'),nb_airport)):
+        layout_aj_air.addWidget(widget,1,i)
+    
+    nb_runway = QDoubleSpinBox(minimum=1, maximum=200, value=0,decimals=0)
+    runway_label = QLabel(langue.get("control.add_settings.runway"))
+    for i,widget in enumerate((runway_label, nb_runway, QLabel('+-'),nb_runway)):
+        layout_aj_run.addWidget(widget,1,i)
+
+
+    def ajouter_airport(*_) -> None:
+        """Permet d'ajouter un aéroport.
+        """
+        #Fenetre_principale.ajouter_airport(variable)
+
+    bouton_val_aj: QAbstractButton = QPushButton(langue.get("control.add_settings.valid"))
+    layout_aj_sph.addWidget(bouton_val_aj)
+    bouton_val_aj.clicked.connect(ajouter_airport)
+
+    def __init__(self) -> None:
+        """Méthode constructeur, permet de créer les boutons cliquables d'ajout de sphères.
+        """
+        super().__init__()
+        self.setWindowTitle(langue.get("control.title"))
+        # layout des controles widget
+        self.layout = QHBoxLayout()
+        self.setLayout(self.layout)
+
+        self.boutton1: QAbstractButton = QPushButton(langue.get("control.simple_add.title"))
+        self.boutton1.clicked.connect(Controles.ajouter_spheres)
+        self.layout.addWidget(self.boutton1)
+
+        self.boutt_show_aj_sph: QAbstractButton = QPushButton(langue.get("control.add_settings.title"))
+        self.layout.addWidget(self.boutt_show_aj_sph)
+        self.boutt_show_aj_sph.clicked.connect(self.fenetre_ajoute.show)
+
+
+controles_graphiques: QWidget = Controles()
+Fenetre_principale: QWidget = Main_window()
+
+Fenetre_principale.changeLangSignal.connect(langue.lazyEval(controles_graphiques.bouton_val_aj.setText,"control.add_settings.valid"))
+Fenetre_principale.changeLangSignal.connect(langue.lazyEval(controles_graphiques.fenetre_ajoute.setWindowTitle,"control.add_settings.title"))
+for label,setloc in ((Controles.amountl,"control.add_settings.nb"),
+                     (Controles.airport_label,"control.add_settings.x"),
+                     (Controles.runway_label,"control.add_settings.y")):
+    Fenetre_principale.changeLangSignal.connect(langue.lazyEval(label.setText,setloc))
+Fenetre_principale.changeLangSignal.connect(langue.lazyEval(controles_graphiques.boutton1.setText,"control.simple_add.title"))
+Fenetre_principale.changeLangSignal.connect(langue.lazyEval(controles_graphiques.boutt_show_aj_sph.setText,"control.add_settings.title"))
+
+Fenetre_principale.showMaximized()
