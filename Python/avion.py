@@ -35,7 +35,7 @@ class Plane :
             dest (Airport): nouvelle destination
         """
         self.dest = dest
-    def flight_time(self, current_fuel) :
+    def flight_time_left(self) :
         """returns flight capacity of self with current_fuel
 
         Args:
@@ -44,7 +44,7 @@ class Plane :
         Returns:
             float: flight time capacity with current_fuel
         """
-        return self.fuel_cap/self.fuel_cons
+        return self.fuel/self.fuel_cons
     def etops_assert(self, route) :
         """checks if the plane has required etops for route
 
@@ -57,3 +57,7 @@ class Plane :
         if self.etops >= ledictionnairedesetops[route] : #to do : créer ledictonnairedesetops
             return True
         return False
+    def fuel_alert(self) :
+        if self.etops > self.flight_time_left() :
+            return False
+        return True
