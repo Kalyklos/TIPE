@@ -18,7 +18,7 @@ except ModuleNotFoundError as e:
     raise e
 
 from settings import *
-langue = json.load(open("langue.json", "r"), parse_float=roundFloats)
+langue = json.load(open("/home/mat/Documents/MP2I/INFO/TIPE/Python/langue.json", "r"))
 
 app: QApplication = QApplication(sys.argv)
 
@@ -175,7 +175,7 @@ class Controles(QWidget):
     
     fenetre_ajoute: QWidget = QScrollArea()
     fenetre_ajoute.setWindowTitle(langue.get("control.add_settings.title"))
-    layout_aj_sph: QLayout = QGridLayout()
+    layout_aj_air: QLayout = QGridLayout()
     fenetre_ajoute.setLayout(layout_aj_air)
 
     amount = QSpinBox(minimum=0, maximum=10000, value=0)
