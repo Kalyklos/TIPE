@@ -60,7 +60,7 @@ def BellmanFord(graph, source):
     """Algorithme de Bellman-Ford
 
     Args:
-        graph (Array): tableau de triplet, chacun représentant un noeud de la forme (source, destination, taille)
+        graph (Array): tableau de triplet, chacun représentant une arête de la forme (source, destination, taille)
         source (int): Origine du chemin rechercher (indice dans la tableau graph).
 
     Returns:
@@ -80,7 +80,3 @@ def BellmanFord(graph, source):
             return
 
     return distance
-
-
-g = [(2,0,3.57),(1,2,2),(0,2,9),(0,1,6)]
-print(BellmanFord(g, 0))
