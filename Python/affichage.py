@@ -17,6 +17,7 @@ except ModuleNotFoundError as e:
     raise e
 
 from settings import *
+import langue
 
 app: QApplication = QApplication(sys.argv)
 
