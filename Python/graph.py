@@ -52,7 +52,7 @@ class Graph :
         """affiche le nom des aéroports
 
         Returns:
-            str: le graphe
+            str: string représentant le graphe à afficher
         """
         string = "\n"
         for i in self.values :
