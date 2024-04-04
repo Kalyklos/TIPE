@@ -5,12 +5,7 @@ import sys
 import os
 from typing import NoReturn
 import importlib
-
-try:
-    from affichage import *
-except ModuleNotFoundError as e:
-    print("Problème avec l'affichage.", file=stderr)
-    raise e
+import affichage
 
 def launch_app() -> NoReturn:
-    sys.exit(app.exec())
+    sys.exit(affichage.app.exec())
