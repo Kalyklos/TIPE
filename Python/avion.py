@@ -21,7 +21,7 @@ class Plane :
         Args : | fuel_Capacity of type float
                | fuel_consumption of type float
                | etops of type int
-               | position of type Airport*Airport*int"""
+               | position of type Airport*Airport*x∈[0;1]"""
         self.fuel_cap = fuel_capacity
         self.fuel = fuel_capacity
         self.fuel_cons = fuel_consumption
