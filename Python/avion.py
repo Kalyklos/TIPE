@@ -18,8 +18,8 @@ class Plane :
     def __init__(self, fuel_capacity, fuel_consumption, etops, position) :
         """initializes
 
-        Args : | fuel_Capacity of type float
-               | fuel_consumption of type float
+        Args : | fuel_Capacity of type float (kg)
+               | fuel_consumption of type float (kg.s^-1)
                | etops of type int
                | position of type Airport*Airport*x∈[0;1]"""
         self.fuel_cap = fuel_capacity
@@ -35,7 +35,7 @@ class Plane :
             dest (Airport): nouvelle destination
         """
         self.dest = dest
-    def flight_time(self, current_fuel) :
+    def flight_time_left(self) :
         """returns flight capacity of self with current_fuel
 
         Args:
@@ -44,7 +44,7 @@ class Plane :
         Returns:
             float: flight time capacity with current_fuel
         """
-        return self.fuel_cap/self.fuel_cons
+        return self.fuel/self.fuel_cons
     def etops_assert(self, route) :
         """checks if the plane has required etops for route
 
@@ -57,3 +57,13 @@ class Plane :
         if self.etops >= ledictionnairedesetops[route] : #to do : créer ledictonnairedesetops
             return True
         return False
+    def fuel_alert(self) :
+        if self.etops > self.flight_time_left() :
+            return False
+        return True
+    def remove_s_fuel(self) :
+        self.fuel = self.fuel-self.fuel_cons
+    def remove_min_fuel(self) :
+        self.fuel = self.fuel-60*self.fuel_cons
+    def remove_f_fuel(self) :
+        self.fuel = self.fuel-3600*self.fuel_cons
