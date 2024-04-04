@@ -18,7 +18,7 @@ except ModuleNotFoundError as e:
     raise e
 
 from settings import *
-import langue
+langue = json.load(open("langue.json", "r"), parse_float=roundFloats)
 
 app: QApplication = QApplication(sys.argv)
 
