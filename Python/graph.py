@@ -52,7 +52,7 @@ class Graph :
         """affiche le nom des aéroports
 
         Returns:
-            str: le nom des aéroports
+            str: string représentant le graphe à afficher
         """
         string = "\n"
         for i in self.values :
@@ -71,9 +71,11 @@ g3 = Graph(3)
 g10 = Graph(10)
 
 g2.add_link(0,1,1)
+
 g3.add_link(0,1,1)
 g3.add_link(1,2,0.5)
 g3.add_link(0,2,2)
+
 g10.add_link(0,1,5)
 g10.add_link(0,2,7.5)
 g10.add_link(0,6,16)

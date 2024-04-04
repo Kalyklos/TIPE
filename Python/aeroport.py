@@ -47,7 +47,7 @@ class Airport:
         """
         self.link.append(other_airport)
     def link_with (self):
-        """renvoi la liste des aéroports avec une connection direct.
+        """renvoie la liste des aéroports avec une connection directe.
 
         Returns:
             list: liste python contenant les aéroports liés.
