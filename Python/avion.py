@@ -15,7 +15,7 @@ ledictionnairedesetops = {}
 class Plane :
     """Classe régissant les différents types d'avions simulable."""
     
-    def __init__(self, fuel_capacity, fuel_consumption, etops, position) :
+    def __init__(self, fuel_capacity, fuel_consumption, etops, position, speed) :
         """initializes
 
         Args : | fuel_Capacity of type float (kg)
@@ -27,6 +27,7 @@ class Plane :
         self.fuel_cons = fuel_consumption
         self.etops = etops
         self.pos = position
+        self.speed = speed
         self.dest = None
     def new_destination(self, dest) :
         """Sets a new destination for the plane
