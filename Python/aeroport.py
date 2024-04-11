@@ -11,9 +11,6 @@ from numpy import *
 
 from settings import *
 
-#dictionnaire qui link les aéroports (désignés par leur identifiants IATA) avec leurs IDs
-dict_airports = {}
-
 class Airport:
     # to do : ajout des poids entres différents sommets.
     """Classe régissant les aéroports (noeuds)"""
