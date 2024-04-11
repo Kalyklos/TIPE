@@ -31,6 +31,7 @@ class Plane :
         self.pos = position
         self.speed = speed
         self.dest = None
+        self.chemin = []
     def new_destination(self, dest) :
         """Sets a new destination for the plane
 
@@ -76,3 +77,10 @@ class Plane :
         """simulates one tick for the plane
         """
         newtruc = self.speed*60/graph[self.pos[0]][self.pos[1]]
+        if self.pos[2] + newtruc < 1 :
+            self.pos[2] += newtruc
+        else :
+            self.pos[0] = self.pos[1]
+            self.pos[1] = self.chemin[0]
+            self.chemin = self.chemin[1, :]
+            self.pos[2] = self.pos[2] + newtruc - 1
