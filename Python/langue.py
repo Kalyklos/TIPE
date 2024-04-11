@@ -22,7 +22,7 @@ def get(setloc: str) -> str:
             temp = temp[key]
         return temp
     except (KeyError):
-        print("Il semblerait que cette clef n'existe pas dans le json",settings.get("affichage.langue"),"vous allez devoir la rajouter ou requérir l'assistance d'une personne compétente).")
+        print("Il semblerait que cette clef n'existe pas dans le fr.json vous allez devoir la rajouter ou requérir l'assistance d'une personne compétente).")
         return lang["404"]
 
 def reload() -> None :
