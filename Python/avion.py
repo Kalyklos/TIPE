@@ -66,5 +66,5 @@ class Plane :
         self.fuel = self.fuel-self.fuel_cons
     def remove_min_fuel(self) :
         self.fuel = self.fuel-60*self.fuel_cons
-    def remove_f_fuel(self) :
+    def remove_h_fuel(self) :
         self.fuel = self.fuel-3600*self.fuel_cons
