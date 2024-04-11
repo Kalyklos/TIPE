@@ -89,7 +89,7 @@ class Main_window(QMainWindow):
         self.layout.addWidget(self.controles)
         self.controles.setFixedHeight(self.controles.minimumSizeHint().height())
         self.changeLangSignal.connect(langue.lazyEval(self.controles.boutton1.setText,"control.simple_add.title"))
-        self.changeLangSignal.connect(langue.lazyEval(self.controles.boutt_show_aj_sph.setText,"control.add_settings.title"))
+        self.changeLangSignal.connect(langue.lazyEval(self.controles.boutt_show_aj_air.setText,"control.add_settings.title"))
 
     def closeEvent(self, event) -> None:
         """Permet de fermer toutes les fenêtres lors de la fermeture de la fenêtre principale, et de terminer le programme"""
@@ -154,8 +154,7 @@ class Main_window(QMainWindow):
             with open(path, encoding="utf-8") as file:
                 self.licenseTextlabel: QWidget = QLabel(file.read())
         except:
-            if settings.get("logging") >= 1:
-                print("The requested licence file was not found at", path, file=stderr)
+            print("The requested licence file was not found at", path, file=stderr)
             self.licenseTextlabel: QWidget = QLabel("Ficher manquant ou chemin cassé.")
         self.fenetre_license.setWidget(self.licenseTextlabel)
         self.fenetre_license.show()
@@ -175,7 +174,7 @@ class Controles(QWidget):
     fenetre_ajoute.setLayout(layout_aj_air)
 
     amount = QSpinBox(minimum=0, maximum=10000, value=0)
-    amountl = QLabel(langue.get("control.add_settings.nb"))
+    amountl = QLabel(langue.get("control.add_settings.runway"))
     layout_aj_air.addWidget(amountl, 0,0)
     layout_aj_air.addWidget(amount,0,1)
 
@@ -210,9 +209,9 @@ class Controles(QWidget):
         self.boutton1.clicked.connect(Controles.ajouter_airport)
         self.layout.addWidget(self.boutton1)
 
-        self.boutt_show_aj_sph: QAbstractButton = QPushButton(langue.get("control.add_settings.title"))
-        self.layout.addWidget(self.boutt_show_aj_sph)
-        self.boutt_show_aj_sph.clicked.connect(self.fenetre_ajoute.show)
+        self.boutt_show_aj_air: QAbstractButton = QPushButton(langue.get("control.add_settings.title"))
+        self.layout.addWidget(self.boutt_show_aj_air)
+        self.boutt_show_aj_air.clicked.connect(self.fenetre_ajoute.show)
 
 
 controles_graphiques: QWidget = Controles()
@@ -225,6 +224,6 @@ for label,setloc in ((Controles.amountl,"control.add_settings.nb"),
                      (Controles.runway_label,"control.add_settings.y")):
     Fenetre_principale.changeLangSignal.connect(langue.lazyEval(label.setText,setloc))
 Fenetre_principale.changeLangSignal.connect(langue.lazyEval(controles_graphiques.boutton1.setText,"control.simple_add.title"))
-Fenetre_principale.changeLangSignal.connect(langue.lazyEval(controles_graphiques.boutt_show_aj_sph.setText,"control.add_settings.title"))
+Fenetre_principale.changeLangSignal.connect(langue.lazyEval(controles_graphiques.boutt_show_aj_air.setText,"control.add_settings.title"))
 
 Fenetre_principale.showMaximized()

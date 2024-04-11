@@ -21,6 +21,20 @@
             "license":"Lire la licence"
         }
     },
+    "control":{
+        "simple_add":{
+            "title":"Des trucs"
+        },
+        "add_settings":{
+            "runway" : "Nombre de piste",
+            "airport" : "Nombre d'aéroport",
+            "title":"Ajouter aeroport"
+        },
+        "help":{
+            "title":"Aide",
+            "license":"Lire la licence"
+        }
+    },
     "file":{
         "license":"LICENCE_FR"
     },
