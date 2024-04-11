@@ -17,7 +17,7 @@ except ModuleNotFoundError as e:
     print("le module PySide6 devrait être installé pour que ce programme puisse fonctionner, lisez README.md pour plus de détails", file=stderr)
     raise e
 
-from settings import *
+from Python.settings import *
 langue = json.load(open("Python/langue.json", "r"))
 app: QApplication = QApplication(sys.argv)
 
