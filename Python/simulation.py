@@ -19,7 +19,7 @@ class Sim :
             raise TypeError("tab_navions must be of type list")
         if not isinstance(G, Graph) :
             raise TypeError("G must be of type Graph")
-        self.tick = 0                       #the current tick of the simulation
+        self.tick = 0                       #the current tick of the simulation 1 TICK = 1 MINUTE INGAME
         self.graph = G                      #graph of the sim
         self.planes = tab_navions           #list of the planes in the sim
         self.tickspeed = 1                  #number of ticks per second 
@@ -42,4 +42,4 @@ class Sim :
         """
         self.tick += 1
         for p in self.planes :
-            pass
+            p.ptick()

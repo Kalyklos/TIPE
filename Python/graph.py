@@ -9,7 +9,6 @@ from numpy import *
 
 from settings import *
 from aeroport import *
-from avion import *
 from way import *
 
 
@@ -69,6 +68,7 @@ class Graph :
 g2 = Graph(2)
 g3 = Graph(3)
 g10 = Graph(10)
+graph = Graph(0)
 
 g2.add_link(0,1,1)
 
