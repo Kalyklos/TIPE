@@ -42,4 +42,4 @@ class Sim :
         """
         self.tick += 1
         for p in self.planes :
-            p.tick()
+            p.ptick()

@@ -73,7 +73,7 @@ class Plane :
         """removes 1h worth of fuel
         """
         self.fuel = self.fuel-3600*self.fuel_cons
-    def tick(self) :
+    def ptick(self) :
         """simulates one tick for the plane
         """
         newtruc = self.speed*60/graph[self.pos[0]][self.pos[1]]
