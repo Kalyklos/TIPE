@@ -2,23 +2,23 @@
     "title":"N-avions",
     "menu":{
         "display":{
-            "title":"A&ffichage",
-            "detach":"&Détacher les contrôles",
-            "attach":"&Attacher les contrôles"
+            "title":"Affichage",
+            "detach":"Détacher les contrôles",
+            "attach":"Attacher les contrôles"
         },
         "settings":{
-            "title":"&Configuration",
-            "speak":"&Langues",
+            "title":"Configuration",
+            "speak":"Langues",
             "theme":{
-                "title":"&Thèmes",
+                "title":"Thèmes",
                 "light":"Clair",
                 "dark":"Sombre",
                 "system":"Système"
             }
         },
         "help":{
-            "title":"Aid&e",
-            "license":"Lire la &licence"
+            "title":"Aide",
+            "license":"Lire la licence"
         }
     },
     "file":{

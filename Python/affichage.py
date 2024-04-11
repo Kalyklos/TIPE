@@ -19,6 +19,7 @@ except ModuleNotFoundError as e:
 
 from settings import *
 langue = json.load(open("Python/langue.json", "r"))
+print(langue)
 
 app: QApplication = QApplication(sys.argv)
 
