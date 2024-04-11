@@ -2,7 +2,7 @@
 # encoding = utf8
 import json
 import os
-from settings import *
+from Python.settings import *
 from functools import partial
 
 lang: dict = {}
@@ -22,8 +22,7 @@ def get(setloc: str) -> str:
             temp = temp[key]
         return temp
     except (KeyError):
-        if settings.get("logging") >= 1:
-            print("Il semblerait que cette clef n'existe pas dans le json",settings.get("affichage.langue"),"vous allez devoir la rajouter ou requérir l'assistance d'une personne compétente).")
+        print("Il semblerait que cette clef n'existe pas dans le json",settings.get("affichage.langue"),"vous allez devoir la rajouter ou requérir l'assistance d'une personne compétente).")
         return lang["404"]
 
 def reload() -> None :

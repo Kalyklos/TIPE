@@ -17,8 +17,8 @@ except ModuleNotFoundError as e:
     print("le module PySide6 devrait être installé pour que ce programme puisse fonctionner, lisez README.md pour plus de détails", file=stderr)
     raise e
 
-from settings import *
-
+from Python.settings import *
+import Python.langue as langue
 app: QApplication = QApplication(sys.argv)
 
 class Main_window(QMainWindow):
@@ -77,11 +77,6 @@ class Main_window(QMainWindow):
         self.changeLangSignal.connect(langue.lazyEval(self.themeMenu.setTitle,"menu.settings.theme.title"))
         self.configMenu.addMenu(self.themeMenu)
         self.themeMenu.addActions(self.themeAction)
-
-        self.simMenu : QMenu = QMenu(langue.get("menu.settings.sim.title"), self.configMenu)
-        self.changeLangSignal.connect(langue.lazyEval(self.simMenu.setTitle,"menu.settings.sim.title"))
-        self.configMenu.addMenu(self.simMenu)
-        self.simMenu.addActions(self.simAction)
 
         self.helpMenu: QMenu = QMenu(langue.get("menu.help.title"), self.menuBar)
         self.changeLangSignal.connect(langue.lazyEval(self.helpMenu.setTitle,"menu.help.title"))
