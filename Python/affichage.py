@@ -190,8 +190,6 @@ class Controles(QWidget):
     
     nb_runway = QDoubleSpinBox(minimum=1, maximum=200, value=0,decimals=0)
     runway_label = QLabel(langue.get("control.add_settings.runway"))
-    for i,widget in enumerate((runway_label, nb_runway, QLabel('+-'),nb_runway)):
-        layout_aj_run.addWidget(widget,1,i)
 
 
     def ajouter_airport(*_) -> None:
@@ -200,7 +198,7 @@ class Controles(QWidget):
         #Fenetre_principale.ajouter_airport(variable)
 
     bouton_val_aj: QAbstractButton = QPushButton(langue.get("control.add_settings.valid"))
-    layout_aj_sph.addWidget(bouton_val_aj)
+    layout_aj_air.addWidget(bouton_val_aj)
     bouton_val_aj.clicked.connect(ajouter_airport)
 
     def __init__(self) -> None:
@@ -213,7 +211,7 @@ class Controles(QWidget):
         self.setLayout(self.layout)
 
         self.boutton1: QAbstractButton = QPushButton(langue.get("control.simple_add.title"))
-        self.boutton1.clicked.connect(Controles.ajouter_spheres)
+        self.boutton1.clicked.connect(Controles.ajouter_airport)
         self.layout.addWidget(self.boutton1)
 
         self.boutt_show_aj_sph: QAbstractButton = QPushButton(langue.get("control.add_settings.title"))
