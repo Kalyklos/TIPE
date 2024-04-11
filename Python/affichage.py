@@ -17,8 +17,8 @@ except ModuleNotFoundError as e:
     print("le module PySide6 devrait être installé pour que ce programme puisse fonctionner, lisez README.md pour plus de détails", file=stderr)
     raise e
 
-from Python.settings import *
-langue = json.load(open("Python/langue.json", "r"))
+from settings import *
+
 app: QApplication = QApplication(sys.argv)
 
 class Main_window(QMainWindow):
@@ -50,9 +50,11 @@ class Main_window(QMainWindow):
         self.themeAction: list(QAction) = []
         for theme in ("light","dark","system"):
             self.themeAction.append(QAction(langue.get("menu.settings.theme."+theme), self))
+            self.changeLangSignal.connect(langue.lazyEval(self.themeAction[-1].setText,"menu.settings.theme."+theme))
             self.themeAction[-1].triggered.connect(partial(self.change_theme,theme))
 
         self.licenseAction: QAction = QAction(langue.get("menu.help.license"), self)
+        self.changeLangSignal.connect(langue.lazyEval(self.licenseAction.setText,"menu.help.license"))
         self.licenseAction.triggered.connect(self.affich_licence)
 
         # Création des menus
@@ -60,19 +62,29 @@ class Main_window(QMainWindow):
         self.menuBar.setFixedWidth(self.size().width())
 
         self.affichageMenu: QMenu = QMenu(langue.get("menu.display.title"), self.menuBar)
+        self.changeLangSignal.connect(langue.lazyEval(self.affichageMenu.setTitle,"menu.display.title"))
         self.menuBar.addMenu(self.affichageMenu)
         self.affichageMenu.addAction(self.attach_detachAction)
         
         self.configMenu : QMenu = QMenu(langue.get("menu.settings.title"), self.menuBar)
+        self.changeLangSignal.connect(langue.lazyEval(self.configMenu.setTitle,"menu.settings.title"))
         self.menuBar.addMenu(self.configMenu)
         self.langMenu : QMenu = QMenu(langue.get("menu.settings.speak"), self.configMenu)
+        self.changeLangSignal.connect(langue.lazyEval(self.langMenu.setTitle,"menu.settings.speak"))
         self.configMenu.addMenu(self.langMenu)
         self.langMenu.addActions(self.langAction)
         self.themeMenu : QMenu = QMenu(langue.get("menu.settings.theme.title"), self.configMenu)
+        self.changeLangSignal.connect(langue.lazyEval(self.themeMenu.setTitle,"menu.settings.theme.title"))
         self.configMenu.addMenu(self.themeMenu)
         self.themeMenu.addActions(self.themeAction)
 
+        self.simMenu : QMenu = QMenu(langue.get("menu.settings.sim.title"), self.configMenu)
+        self.changeLangSignal.connect(langue.lazyEval(self.simMenu.setTitle,"menu.settings.sim.title"))
+        self.configMenu.addMenu(self.simMenu)
+        self.simMenu.addActions(self.simAction)
+
         self.helpMenu: QMenu = QMenu(langue.get("menu.help.title"), self.menuBar)
+        self.changeLangSignal.connect(langue.lazyEval(self.helpMenu.setTitle,"menu.help.title"))
         self.menuBar.addMenu(self.helpMenu)
         self.helpMenu.addAction(self.licenseAction)
         
@@ -81,6 +93,8 @@ class Main_window(QMainWindow):
         self.controles = Controles()
         self.layout.addWidget(self.controles)
         self.controles.setFixedHeight(self.controles.minimumSizeHint().height())
+        self.changeLangSignal.connect(langue.lazyEval(self.controles.boutton1.setText,"control.simple_add.title"))
+        self.changeLangSignal.connect(langue.lazyEval(self.controles.boutt_show_aj_sph.setText,"control.add_settings.title"))
 
     def closeEvent(self, event) -> None:
         """Permet de fermer toutes les fenêtres lors de la fermeture de la fenêtre principale, et de terminer le programme"""
@@ -208,4 +222,14 @@ class Controles(QWidget):
 
 controles_graphiques: QWidget = Controles()
 Fenetre_principale: QWidget = Main_window()
+
+Fenetre_principale.changeLangSignal.connect(langue.lazyEval(controles_graphiques.bouton_val_aj.setText,"control.add_settings.valid"))
+Fenetre_principale.changeLangSignal.connect(langue.lazyEval(controles_graphiques.fenetre_ajoute.setWindowTitle,"control.add_settings.title"))
+for label,setloc in ((Controles.amountl,"control.add_settings.nb"),
+                     (Controles.airport_label,"control.add_settings.x"),
+                     (Controles.runway_label,"control.add_settings.y")):
+    Fenetre_principale.changeLangSignal.connect(langue.lazyEval(label.setText,setloc))
+Fenetre_principale.changeLangSignal.connect(langue.lazyEval(controles_graphiques.boutton1.setText,"control.simple_add.title"))
+Fenetre_principale.changeLangSignal.connect(langue.lazyEval(controles_graphiques.boutt_show_aj_sph.setText,"control.add_settings.title"))
+
 Fenetre_principale.showMaximized()
