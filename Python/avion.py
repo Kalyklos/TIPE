@@ -21,7 +21,8 @@ class Plane :
         Args : | fuel_Capacity of type float (kg)
                | fuel_consumption of type float (kg.s^-1)
                | etops of type int
-               | position of type Airport*Airport*x∈[0;1]"""
+               | position of type Airport*Airport*x∈[0;1]
+               | speed of type int"""
         self.fuel_cap = fuel_capacity
         self.fuel = fuel_capacity
         self.fuel_cons = fuel_consumption
@@ -68,3 +69,5 @@ class Plane :
         self.fuel = self.fuel-60*self.fuel_cons
     def remove_h_fuel(self) :
         self.fuel = self.fuel-3600*self.fuel_cons
+    def tick(self) :
+        pass
