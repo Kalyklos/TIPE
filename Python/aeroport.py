@@ -19,6 +19,7 @@ class Airport:
         self.f_runway = self.nb_runway
         self.link = []
         self.id = id
+        self.nb_boulangeries = 0
     def is_free (self):
         """Vérifie si une piste est libre.
 
@@ -28,6 +29,8 @@ class Airport:
         if self.f_runway > 0:
             return True
         return False
+    def add_boulangerie(self) :
+        self.nb_boulangeries += 1
     def take_runway(self):
         """Réserve une piste.
         """

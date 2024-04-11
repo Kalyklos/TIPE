@@ -22,8 +22,7 @@ class Sim :
         self.tick = 0                       #the current tick of the simulation
         self.graph = G                      #graph of the sim
         self.planes = tab_navions           #list of the planes in the sim
-        self.tickspeed = 1                  #number of ticks per second
-    
+        self.tickspeed = 1                  #number of ticks per second 
     def set_tickspeed(self, ts) :
         """changes the tickspeed of the simulation
 
@@ -31,7 +30,6 @@ class Sim :
             ts (int): neww tickspeed
         """
         self.tickspeed = ts
-    
     def new_plane(self, plane) :
         """adds a new plane in the simulation
 
@@ -39,7 +37,6 @@ class Sim :
             plane (Plane): the plane to be added to the sim
         """
         self.planes.append(plane)
-    
     def new_tick(self) :
         """simulates a tick
         """
