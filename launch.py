@@ -4,5 +4,5 @@
 
 # Fichier utilisé pour lancer le code depuis une compilation du code source
 
-import main
-main.launch_app()
+import Python.main
+Python.main.launch_app()
