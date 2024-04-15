@@ -17,7 +17,7 @@ except ModuleNotFoundError as e:
     print("le module PySide6 devrait être installé pour que ce programme puisse fonctionner, lisez README.md pour plus de détails", file=stderr)
     raise e
 
-from Python.settings import *
+import Python.settings as settings
 import Python.langue as langue
 app: QApplication = QApplication(sys.argv)
 
@@ -197,7 +197,7 @@ class Controles(QWidget):
     bouton_val_aj.clicked.connect(ajouter_airport)
 
     def __init__(self) -> None:
-        """Méthode constructeur, permet de créer les boutons cliquables d'ajout de sphères.
+        """Méthode constructeur, permet de créer les boutons cliquables d'ajout d'aéroports.
         """
         super().__init__()
         self.setWindowTitle(langue.get("control.title"))

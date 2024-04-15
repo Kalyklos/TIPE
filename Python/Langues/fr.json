@@ -22,13 +22,15 @@
         }
     },
     "control":{
+        "title":"Contrôle des aéroports",
         "simple_add":{
             "title":"Des trucs"
         },
         "add_settings":{
             "runway" : "Nombre de piste",
             "airport" : "Nombre d'aéroport",
-            "title":"Ajouter aeroport"
+            "title":"Ajouter aéroport",
+            "valid":"Ajouter"
         },
         "help":{
             "title":"Aide",

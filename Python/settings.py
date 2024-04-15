@@ -34,3 +34,66 @@ else:
     except:
         print("inexistant or ill-formated settings.json file, using defaults settings only")
 
+def get(setloc: str) -> Any:
+    path: list[str]=setloc.split('.')
+    
+    try:
+        temp = settings
+        for key in path:
+            temp = temp[key]
+        return temp
+    
+    except (KeyError, TypeError):
+        try:
+            temp = defaults
+            for key in path:
+                temp = temp[key]
+            return temp
+        
+        except:
+            print("No setting found for ", setloc, file=stderr)
+            return None
+
+
+def set(setloc: str, value) -> bool:
+    """Définit les paramètres 'setloc' à la valeur value.
+
+    Args:
+        setloc (str): Paramètre à mettre à jour, un fichier. Permit de séparer par groupe (par exemple "group.sub.setting")
+        value (any): La nouvelle valeur du paramètre, doit être représentable en json
+
+    Returns:
+        bool: if the update was sucessful
+    """
+    temp = settings
+    path: list[str]=setloc.split('.')
+    
+    for key in path[:-1]:
+        if type(temp) is not dict:
+            print("setting path to non dict, abborting", file=stderr)
+            return False
+        
+        if key not in temp:
+            temp[key] = {}
+        temp = temp[key]
+        
+    temp[path[-1]] = value
+    
+    return True
+
+
+def save() -> bool:
+    """Sauvegarde les changer dans settings.json
+
+    Returns:
+        bool: Si les changement on pu se faire
+    """
+    
+    try:
+        with open(path, 'w', encoding="utf-8") as setfile:
+            json.dump(settings, setfile, indent=2)
+            return True
+        
+    except Exception as e:
+        print("Illegal setting for json representation or no write acess:", e, file=stderr)          
+        return False
