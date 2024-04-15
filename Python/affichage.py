@@ -137,8 +137,8 @@ class Main_window(QMainWindow):
             """
         elif settings.get("affichage.theme")=="system":
             style = """
-            background-color: #05C1FF;
-            color: #FA9901;
+            background-color: #1AFFE7;
+            color: #A100DE;
             """
         self.setStyleSheet(style)
         controles_graphiques.setStyleSheet(style)
