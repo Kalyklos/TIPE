@@ -48,7 +48,7 @@ class Main_window(QMainWindow):
             self.langAction[-1].triggered.connect(partial(self.change_lang,speak[1]))
         
         self.themeAction: list(QAction) = []
-        for theme in ("light","dark","system"):
+        for theme in ("light","dark","system","uwu"):
             self.themeAction.append(QAction(langue.get("menu.settings.theme."+theme), self))
             self.changeLangSignal.connect(langue.lazyEval(self.themeAction[-1].setText,"menu.settings.theme."+theme))
             self.themeAction[-1].triggered.connect(partial(self.change_theme,theme))
@@ -139,6 +139,11 @@ class Main_window(QMainWindow):
             style = """
             background-color: #1AFFE7;
             color: #A100DE;
+            """
+        elif settings.get("affichage.theme")=="uwu":
+            style = """
+            background-color: #DE00B6;
+            color: #36F5C6;
             """
         self.setStyleSheet(style)
         controles_graphiques.setStyleSheet(style)
