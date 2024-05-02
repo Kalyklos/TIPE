@@ -41,4 +41,11 @@ Problème pull :
 ### Problématique
 Thème 2025 :  transition, transformation, conversion
 
-Comment organiser et modéliser un traffic aérien ?
+Comment organiser et optimiser un traffic aérien ?
+  Pour plusieurs avions :
+    -> optimiser la moyenne des [ (temps de parcours) / (temps optimal (avion seul)) ] / (nombre d'avions)
+  > Pour cela test plusieurs algorithmes
+   - Dijkstra
+   - Bellman-Ford (mieux)
+  Départ sur une base de Bellman-Ford, recherche avec implémentation des etops.
+   
