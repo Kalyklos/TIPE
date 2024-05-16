@@ -48,4 +48,4 @@ Comment organiser et optimiser la planification d'un traffic aérien ?
    - Dijkstra
    - Bellman-Ford (mieux)
   Départ sur une base de Bellman-Ford, recherche avec implémentation des etops. Ainsi qu'augmentation du nombre d'avions -> standby si pas possible d'avancer.
-  
+Titre : L'utilisation de modèles informatique dans la gestion du traffic aérien mondial.
