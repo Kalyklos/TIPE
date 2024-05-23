@@ -80,3 +80,6 @@ def BellmanFord(graph, source):
             return
 
     return distance
+
+tab = ((1,2,3),(5,4,7),(1,2,3))
+print(BellmanFord(tab, 1))
