@@ -61,7 +61,7 @@ def BellmanFord(graph, source):
 
     Args:
         graph (Array): tableau de triplet, chacun représentant une arête de la forme (source, destination, taille)
-        source (int): Origine du chemin rechercher (indice dans la tableau graph).
+        source (int): Origine du chemin rechercher.
 
     Returns:
         Array: tableau des distances
@@ -81,5 +81,5 @@ def BellmanFord(graph, source):
 
     return distance
 
-tab = ((1,2,3),(5,4,7),(1,2,3))
-print(BellmanFord(tab, 1))
+tab_test = [(1,2,10),(2,1,10),(1,3,1),(3,1,1),(3,5,1),(5,3,1),(5,6,3),(6,5,3),(4,6,5),(6,4,5),(5,4,10),(4,5,10)]
+print(BellmanFord(tab_test, 6))
