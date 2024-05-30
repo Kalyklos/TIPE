@@ -4,10 +4,11 @@
 
 from math import *
 from numpy import *
+from random import *
+#from settings import *
+#from aeroport import *
+#from avion import *
 
-from settings import *
-from aeroport import *
-from avion import *
 
 def Dijkstra(graphe, depart):
     """Appelle shortest_way_dijkstra sur graphe.
@@ -55,6 +56,14 @@ def shortest_way_dijkstra (sommet, link, depart):
 
     return distance
 
+def taille (graph):
+    t = 0
+    for i in graph:
+        if i[0] > t:
+            t = i[0]
+        if i[1] > t:
+            t = i[1]
+    return t+1
 
 def BellmanFord(graph, source):
     """Algorithme de Bellman-Ford
@@ -66,10 +75,10 @@ def BellmanFord(graph, source):
     Returns:
         Array: tableau des distances
     """
-    distance = [float("Inf")] * len(graph)
+    distance = [float("Inf")] * taille(graph)
     distance[source] = 0
 
-    for _ in range(len(graph) - 1):
+    for _ in range(taille(graph) - 1):
         for u, v, w in graph:
             if distance[u] != float("Inf") and distance[u] + w < distance[v]:
                 distance[v] = distance[u] + w
@@ -78,8 +87,31 @@ def BellmanFord(graph, source):
         if distance[u] != float("Inf") and distance[u] + w < distance[v]:
             print("Graphe avec un cycle négatif")
             return
-
+    del(distance[0])
     return distance
 
-tab_test = [(1,2,10),(2,1,10),(1,3,1),(3,1,1),(3,5,1),(5,3,1),(5,6,3),(6,5,3),(4,6,5),(6,4,5),(5,4,10),(4,5,10)]
-print(BellmanFord(tab_test, 6))
+def est_connexe (graph):
+    t = BellmanFord(graph, 1)
+    for i in t:
+        if i == float("Inf"):
+            return False
+    return True
+
+def random_graph (p):
+    tab = []
+    for i in range (1,7):
+        for j in range (1, 7):
+            a = random()
+            if a >= p:
+                tab.append((i, j, randint(60, 60*8)))
+    if (not est_connexe(tab)):
+        return random_graph (p)
+    return tab
+
+def test_des_algo ():
+    p = randint(300, 500)/1000
+    graph = random_graph (p)
+    BellmanFord(graph, 1)
+
+for i in range (50000):
+    test_des_algo()
