@@ -5,54 +5,41 @@
 from math import *
 from numpy import *
 from random import *
+from time import *
 #from settings import *
 #from aeroport import *
 #from avion import *
 
+from fibHeap import FibonacciHeap
 
-def Dijkstra(graphe, depart):
-    """Appelle shortest_way_dijkstra sur graphe.
+def dijkstra(adjList, source, sink = None):
+    n = len(adjList)    #intentionally 1 more than the number of vertices, keep the 0th entry free for convenience
+    visited = [False]*n
+    distance = [float('inf')]*n
 
-    Args:
-        graphe (dict): Dictionnaire de dictionnaire contenant la distance de chaque aéroport par rapport aux autres.
-        depart (str or Airport): nom de l'aeroport ou Airport de aeroport.py
+    heapNodes = [None]*n
+    heap = FibonacciHeap()
+    for i in range(1, n):
+        heapNodes[i] = heap.insert(float('inf'), i)     # distance, label
 
-    Returns:
-        shortest_way_dijkstra sur le graphe avec depart comme aeroport de depart
-    """
-    return shortest_way_dijkstra ([k.keys for k in graphe], graphe, str(depart))
+    distance[source] = 0
+    heap.decrease_key(heapNodes[source], 0)
 
-def shortest_way_dijkstra (sommet, link, depart):
-    # complexité O(n log(n))
-    """renvoie les distances les plus courtes pour chaque aeroport relativement à l'aeroport de départ grâce à l'algorithme de Dijkstra.
+    while heap.total_nodes:
+        current = heap.extract_min().value
+        visited[current] = True
 
-    Args:
-        sommet (list): list des sommets du graphe.
-        link (dict): dictionnaire de dictionnaire contenant pour chaque aeroport les liens direct avec les aeroports et leur distance (distance par rapport à soit-même = 0).
-        depart (str): aeroport de départ.
+        #early exit
+        if sink and current == sink:
+            break
 
-    Returns:
-        dict: dictionnaire contenant la distance à chaque aeroport par rapport à celui de départ.
-    """
+        for couple in adjList[current]:
+            neighbor, cost = couple
+            if not visited[neighbor]:
+                if distance[current] + cost < distance[neighbor]:
+                    distance[neighbor] = distance[current] + cost
+                    heap.decrease_key(heapNodes[neighbor], distance[neighbor])
 
-    # initialisation de toute les distances entre aéroport à l'infini (de numpy).
-    distance = {}
-    for s in sommet:
-        distance[s] = inf
-    distance[depart] = 0
-    sommet_reference = []
-    while [k for k in sommet if distance[k] != inf and k not in sommet_reference] != []: # tant que des sommets sont à l'infini.
-
-        distance_min = inf                                                               # recherche de minimum
-        for i in distance:
-            if i not in sommet_reference and distance[i] < distance_min:
-                distance_min = distance[i]
-                indice_sommet = i
-
-        voisins = [k for k in (link[indice_sommet]) if link[indice_sommet][k] != 0]
-        for proche in voisins:
-            distance[proche] = min(distance[proche], distance[indice_sommet] + link[indice_sommet][proche]) # ajout du plus petit chemin par rapport aux sommets liés.
-            sommet_reference.append(indice_sommet)
 
     return distance
 
@@ -108,10 +95,38 @@ def random_graph (p):
         return random_graph (p)
     return tab
 
+def graph_to_adj (g):
+    list_adj = [[],[],[],[],[],[],[]]
+    for i in range (len(g)-1):
+        list_adj[g[i][0]] = (g[i][1],g[i][2])
+    return list_adj
+
 def test_des_algo ():
     p = randint(300, 500)/1000
     graph = random_graph (p)
-    BellmanFord(graph, 1)
+    return graph
+totalstart = time()
+start = time()
+n = 50000
+graph_alea_b = []
+graph_alea_d = []
+for i in range (n):
+    a = test_des_algo()
+    graph_alea_b.append(a)
+    graph_alea_d.append(graph_to_adj (a))
+print("Temps de génération aléatoire ", time() - start)
 
-for i in range (50000):
-    test_des_algo()
+def test_simulation_speed():
+            s1 = time()
+            print("starting update")
+            for i in range (n):
+                BellmanFord (graph_alea_b[i], 1)
+            print("graph time Bellman-Ford :", time()-s1)
+            s2 = time()
+            for i in range (n):
+                dijkstra (graph_alea_d[i], 1)
+            print("graph time Bellman-Ford :", time()-s2)
+            
+
+test_simulation_speed()
+print("total:", time()-totalstart)

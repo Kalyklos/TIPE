@@ -29,8 +29,6 @@ class Airport:
         if self.f_runway > 0:
             return True
         return False
-    def add_boulangerie(self) :
-        self.nb_boulangeries += 1
     def take_runway(self):
         """Réserve une piste.
         """
