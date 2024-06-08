@@ -212,6 +212,48 @@ class Graph():
  
        # printArr(dist,V)
 
+class Graph_list:
+    def __init__(self, size):
+        self.adj_matrix = [[0] * size for _ in range(size)]
+        self.size = size
+        self.vertex_data = [''] * size
+
+    def add_edge(self, u, v, weight):
+        if 0 <= u < self.size and 0 <= v < self.size:
+            self.adj_matrix[u][v] = weight
+            self.adj_matrix[v][u] = weight  # For undirected graph
+
+    def add_vertex_data(self, vertex, data):
+        if 0 <= vertex < self.size:
+            self.vertex_data[vertex] = data
+
+    def dijkstra(self, start_vertex_data):
+        start_vertex = self.vertex_data.index(start_vertex_data)
+        distances = [float('inf')] * self.size
+        distances[start_vertex] = 0
+        visited = [False] * self.size
+
+        for _ in range(self.size):
+            min_distance = float('inf')
+            u = None
+            for i in range(self.size):
+                if not visited[i] and distances[i] < min_distance:
+                    min_distance = distances[i]
+                    u = i
+
+            if u is None:
+                break
+
+            visited[u] = True
+
+            for v in range(self.size):
+                if self.adj_matrix[u][v] != 0 and not visited[v]:
+                    alt = distances[u] + self.adj_matrix[u][v]
+                    if alt < distances[v]:
+                        distances[v] = alt
+
+        return distances
+
 def taille (graph):
     t = 0
     for i in graph:
@@ -259,6 +301,10 @@ for i in range (5, 11):
     def random_graph (p):
         tab_b = []
         g = Graph(nombre_sommet+1)
+        gl = Graph_list(nombre_sommet+1)
+        letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        for i in range (nombre_sommet):
+            gl.add_vertex_data(i, letters[i])
         for i in range (1,nombre_sommet+1):
             for j in range (1, nombre_sommet+1):
                 if (i != j):
@@ -266,10 +312,13 @@ for i in range (5, 11):
                     if a >= p:
                         c = randint(60, 60*8)
                         tab_b.append((i, j, c))
+                        tab_b.append((j, i, c))
                         g.addEdge(i, j, c)
+                        g.addEdge(j, i, c)
+                        gl.add_edge(i, j, c)
         if (not est_connexe(tab_b)):
             return random_graph (p)
-        return (tab_b, g)
+        return (tab_b, g, gl)
 
     def test_des_algo ():
         p = randint(500, 500)/1000
@@ -280,10 +329,13 @@ for i in range (5, 11):
     n = 100000
     graph_alea_b = []
     graph_alea_d = []
+    graph_alea_dl = []
+    
     for i in range (n):
-        a, b = test_des_algo()
+        a, b, c = test_des_algo()
         graph_alea_b.append(a)
         graph_alea_d.append(b)
+        graph_alea_dl.append(c)
     print("Temps de génération aléatoire ", time() - start)
 
     def test_simulation_speed():
@@ -295,7 +347,11 @@ for i in range (5, 11):
             s2 = time()
             for i in range (n):
                 graph_alea_d[i].dijkstra (1)
-            print("graph time Dijkstra :", time()-s2)
+            print("graph time Dijkstra heap :", time()-s2)
+            s3 = time()
+            for i in range (n):
+                graph_alea_dl[i].dijkstra('B')
+            print("graph time Dijkstra list_adj :", time()-s3)
             
     test_simulation_speed()
     nombre_sommet += 1
