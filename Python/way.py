@@ -262,41 +262,40 @@ def taille (graph):
         if i[1] > t:
             t = i[1]
     return t+1
-
-def BellmanFord(graph, source):
-    """Algorithme de Bellman-Ford
-
-    Args:
-        graph (Array): tableau de triplet, chacun représentant une arête de la forme (source, destination, taille)
-        source (int): Origine du chemin rechercher.
-
-    Returns:
-        Array: tableau des distances
-    """
-    distance = [float("Inf")] * taille(graph)
-    distance[source] = 0
-
-    for _ in range(taille(graph) - 1):
-        for u, v, w in graph:
-            if distance[u] != float("Inf") and distance[u] + w < distance[v]:
-                distance[v] = distance[u] + w
-
-    for u, v, w in graph:
-        if distance[u] != float("Inf") and distance[u] + w < distance[v]:
-            print("Graphe avec un cycle négatif")
-            return
-    del(distance[0])
-    return distance
-
-def est_connexe (graph):
-    t = BellmanFord(graph, 1)
-    for i in t:
-        if i == float("Inf"):
-            return False
-    return True
-
 totalstart = time()
 for i in range (5, 11):
+    def BellmanFord(graph, source):
+        """Algorithme de Bellman-Ford
+
+        Args:
+            graph (Array): tableau de triplet, chacun représentant une arête de la forme (source, destination, taille)
+            source (int): Origine du chemin rechercher.
+
+        Returns:
+            Array: tableau des distances
+        """
+        distance = [float("Inf")] * (nombre_sommet+1)
+        distance[source] = 0
+
+        for _ in range(nombre_sommet - 1):
+            for u, v, w in graph:
+                if distance[u] != float("Inf") and distance[u] + w < distance[v]:
+                    distance[v] = distance[u] + w
+
+        for u, v, w in graph:
+            if distance[u] != float("Inf") and distance[u] + w < distance[v]:
+                print("Graphe avec un cycle négatif")
+                return
+        del(distance[0])
+        return distance
+
+    def est_connexe (graph):
+        t = BellmanFord(graph, 1)
+        for i in t:
+            if i == float("Inf"):
+                return False
+        return True
+
     print("Temps pour ", nombre_sommet, "sommets")
     def random_graph (p):
         tab_b = []
@@ -321,7 +320,7 @@ for i in range (5, 11):
         return (tab_b, g, gl)
 
     def test_des_algo ():
-        p = randint(500, 500)/1000
+        p = randint(200, 800)/1000
         graph = random_graph (p)
         return graph
 
