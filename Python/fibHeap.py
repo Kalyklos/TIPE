@@ -8,18 +8,21 @@ class FibonacciHeap:
             self.parent = self.child = self.left = self.right = None
             self.degree = 0
             self.mark = False
-
+        def need_value(self):
+            return self.value
     # function to iterate through a doubly linked list
     def iterate(self, head):
         node = stop = head
         flag = False
         while True:
-            if node == stop and flag is True:
+            if ((node == stop) and (flag == True)):
                 break
             elif node == stop:
                 flag = True
             yield node
             node = node.right
+    
+    
 
     # pointer to the head and minimum node in the root list
     root_list, min_node = None, None

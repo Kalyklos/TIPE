@@ -26,15 +26,14 @@ def dijkstra(adjList, source, sink = None):
     heap.decrease_key(heapNodes[source], 0)
 
     while heap.total_nodes:
-        current = heap.extract_min().value
+        current = (heap.extract_min()).need_value()
         visited[current] = True
 
         #early exit
         if sink and current == sink:
             break
 
-        for couple in adjList[current]:
-            neighbor, cost = couple
+        for (neighbor, cost) in adjList[current]:
             if not visited[neighbor]:
                 if distance[current] + cost < distance[neighbor]:
                     distance[neighbor] = distance[current] + cost
@@ -85,21 +84,18 @@ def est_connexe (graph):
     return True
 
 def random_graph (p):
-    tab = []
+    tab_b = []
+    list_adj = [[],[],[],[],[],[],[]]
     for i in range (1,7):
         for j in range (1, 7):
             a = random()
             if a >= p:
-                tab.append((i, j, randint(60, 60*8)))
-    if (not est_connexe(tab)):
+                c = randint(60, 60*8)
+                tab_b.append((i, j, c))
+                list_adj[i].append((j, c))
+    if (not est_connexe(tab_b)):
         return random_graph (p)
-    return tab
-
-def graph_to_adj (g):
-    list_adj = [[],[],[],[],[],[],[]]
-    for i in range (len(g)-1):
-        list_adj[g[i][0]] = (g[i][1],g[i][2])
-    return list_adj
+    return (tab_b, list_adj)
 
 def test_des_algo ():
     p = randint(300, 500)/1000
@@ -111,9 +107,9 @@ n = 50000
 graph_alea_b = []
 graph_alea_d = []
 for i in range (n):
-    a = test_des_algo()
+    a, b = test_des_algo()
     graph_alea_b.append(a)
-    graph_alea_d.append(graph_to_adj (a))
+    graph_alea_d.append(b)
 print("Temps de génération aléatoire ", time() - start)
 
 def test_simulation_speed():
