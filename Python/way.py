@@ -350,7 +350,7 @@ for i in range (5, 11):
             s3 = time()
             for i in range (n):
                 graph_alea_dl[i].dijkstra('B')
-            print("graph time Dijkstra list_adj :", time()-s3)
+            print("graph time Dijkstra adj_matrix :", time()-s3)
             
     test_simulation_speed()
     nombre_sommet += 1
