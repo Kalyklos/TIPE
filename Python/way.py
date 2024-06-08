@@ -320,7 +320,7 @@ for i in range (5, 11):
         return (tab_b, g, gl)
 
     def test_des_algo ():
-        p = randint(200, 1000)/1000
+        p = randint(300, 1000)/1000
         graph = random_graph (p)
         return graph
 
