@@ -12,7 +12,8 @@ from time import *
 
 from collections import defaultdict
 import sys
- 
+
+nombre_sommet = 5
  
 class Heap():
  
@@ -252,37 +253,40 @@ def est_connexe (graph):
             return False
     return True
 
-def random_graph (p):
-    tab_b = []
-    g = Graph(7)
-    for i in range (1,7):
-        for j in range (1, 7):
-            if (i != j):
-                a = random()
-                if a >= p:
-                    c = randint(60, 60*8)
-                    tab_b.append((i, j, c))
-                    g.addEdge(i, j, c)
-    if (not est_connexe(tab_b)):
-        return random_graph (p)
-    return (tab_b, g)
-
-def test_des_algo ():
-    p = randint(500, 500)/1000
-    graph = random_graph (p)
-    return graph
 totalstart = time()
-start = time()
-n = 100000
-graph_alea_b = []
-graph_alea_d = []
-for i in range (n):
-    a, b = test_des_algo()
-    graph_alea_b.append(a)
-    graph_alea_d.append(b)
-print("Temps de génération aléatoire ", time() - start)
+for i in range (5, 11):
+    print("Temps pour ", nombre_sommet, "sommets")
+    def random_graph (p):
+        tab_b = []
+        g = Graph(nombre_sommet+1)
+        for i in range (1,nombre_sommet+1):
+            for j in range (1, nombre_sommet+1):
+                if (i != j):
+                    a = random()
+                    if a >= p:
+                        c = randint(60, 60*8)
+                        tab_b.append((i, j, c))
+                        g.addEdge(i, j, c)
+        if (not est_connexe(tab_b)):
+            return random_graph (p)
+        return (tab_b, g)
 
-def test_simulation_speed():
+    def test_des_algo ():
+        p = randint(500, 500)/1000
+        graph = random_graph (p)
+        return graph
+
+    start = time()
+    n = 100000
+    graph_alea_b = []
+    graph_alea_d = []
+    for i in range (n):
+        a, b = test_des_algo()
+        graph_alea_b.append(a)
+        graph_alea_d.append(b)
+    print("Temps de génération aléatoire ", time() - start)
+
+    def test_simulation_speed():
             s1 = time()
             print("starting update")
             for i in range (n):
@@ -293,6 +297,6 @@ def test_simulation_speed():
                 graph_alea_d[i].dijkstra (1)
             print("graph time Dijkstra :", time()-s2)
             
-
-test_simulation_speed()
+    test_simulation_speed()
+    nombre_sommet += 1
 print("total:", time()-totalstart)
