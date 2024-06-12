@@ -346,11 +346,11 @@ for i in range (5, 11):
             s2 = time()
             for i in range (n):
                 graph_alea_d[i].dijkstra (1)
-            print("graph time Dijkstra heap :", time()-s2)
+            print("graph time Dijkstra adj_list :", time()-s2)
             s3 = time()
             for i in range (n):
                 graph_alea_dl[i].dijkstra('B')
-            print("graph time Dijkstra adj_matrix :", time()-s3)
+            print("graph time Dijkstra fib_heap :", time()-s3)
             
     test_simulation_speed()
     nombre_sommet += 1

@@ -19,7 +19,6 @@ class Airport:
         self.f_runway = self.nb_runway
         self.link = []
         self.id = id
-        self.nb_boulangeries = 0
     def is_free (self):
         """Vérifie si une piste est libre.
 
