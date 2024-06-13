@@ -13,7 +13,7 @@ from time import *
 from collections import defaultdict
 import sys
 
-nombre_sommet = 5
+nombre_sommet = 40
  
 class Heap():
  
@@ -163,7 +163,7 @@ class Graph():
                         dist[v] = pCrawl[1] + dist[u]
                         minHeap.decreaseKey(v, dist[v])
  
-            printArr(dist,V)
+            # printArr(dist,V)
 
 class Graph_list:
     def __init__(self, size):
@@ -254,7 +254,7 @@ for i in range (5, 11):
         tab_b = []
         g = Graph(nombre_sommet+1)
         gl = Graph_list(nombre_sommet+1)
-        letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
         for i in range (nombre_sommet):
             gl.add_vertex_data(i, letters[i])
         for i in range (1,nombre_sommet+1):
@@ -278,7 +278,7 @@ for i in range (5, 11):
         return graph
 
     start = time()
-    n = 100000
+    n = 10000
     graph_alea_b = []
     graph_alea_d = []
     graph_alea_dl = []
