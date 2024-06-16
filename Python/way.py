@@ -163,7 +163,7 @@ class Graph():
                         dist[v] = pCrawl[1] + dist[u]
                         minHeap.decreaseKey(v, dist[v])
  
-            # printArr(dist,V)
+        printArr(dist,V)
 
 class Graph_list:
     def __init__(self, size):
@@ -278,7 +278,7 @@ for i in range (5, 6):
         return graph
 
     start = time()
-    n = 10000
+    n = 1
     graph_alea_b = []
     graph_alea_d = []
     graph_alea_dl = []
@@ -294,11 +294,11 @@ for i in range (5, 6):
             s1 = time()
             print("starting update")
             for i in range (n):
-                BellmanFord (graph_alea_b[i], 1)
+                print(BellmanFord (graph_alea_b[i], 1))
             print("graph time Bellman-Ford :", time()-s1)
             s2 = time()
             for i in range (n):
-                graph_alea_d[i].dijkstra (1)
+                print(graph_alea_d[i].dijkstra (1))
             print("graph time Dijkstra adj_list :", time()-s2)
             s3 = time()
             for i in range (n):
