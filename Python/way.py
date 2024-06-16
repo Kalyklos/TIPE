@@ -216,7 +216,7 @@ def taille (graph):
             t = i[1]
     return t+1
 totalstart = time()
-for i in range (5, 11):
+for i in range (5, 6):
     def BellmanFord(graph, source):
         """Algorithme de Bellman-Ford
 
